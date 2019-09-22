@@ -1,5 +1,10 @@
-from flask import render_template
+from flask import render_template,request,redirect,url_for,flash
 from . import main
+from ..models import User,Post
+from .. import db,photos
+from .forms import PostForm
+from flask_login import login_required,current_user
+import datetime
 
 posts = [
     {
@@ -25,7 +30,11 @@ def index():
 def about():
     return render_template('about.html', title='About')
 
-@main.route('/post/new')
+@main.route('/post/new', methods=['GET','POST'])
 @login_required
 def new_post():
-    return render_template('create_post.html', title='New Post')
+    form = PostForm()
+    if form.validate_on_submit():
+        flash('Post created successfully!', 'success')
+        return redirect(url_for('.index'))
+    return render_template('create_post.html', title='New Post', form=form)
