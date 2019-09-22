@@ -25,7 +25,7 @@
                             aria-haspopup="true" aria-expanded="false" style="margin-right: 40px; color: #cbd5db; font-weight: 500;">{{current_user.username| capitalize}}<span
                                 class="caret"></span></a>
                         <ul class="dropdown">
-                            <li><a href="#">Profile</a></li>
+                            <li><a href="{{url_for('auth.account')}}">Profile</a></li>
                             <li><a href="#">Posts</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>

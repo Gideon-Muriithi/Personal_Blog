@@ -24,3 +24,8 @@ def index():
 @main.route('/about')
 def about():
     return render_template('about.html', title='About')
+
+@main.route('/post/new')
+@login_required
+def new_post():
+    return render_template('create_post.html', title='New Post')
