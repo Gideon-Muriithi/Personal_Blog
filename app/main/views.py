@@ -6,24 +6,10 @@ from .forms import PostForm
 from flask_login import login_required,current_user
 import datetime
 
-posts = [
-    {
-        'author': 'Gideon M.',
-        'title': 'Blog Post',
-        'content': 'First Post',
-        'date_posted': 'July 1, 2019',
-    },
-
-    {
-        'author': 'Jane Doe',
-        'title': 'Blog Post 1',
-        'content': 'Second Post',
-        'date_posted': 'June  21, 2019',
-    }
-]
 
 @main.route('/')
 def index():
+    posts = Post.query.all()
     return render_template('index.html', posts=posts)
 
 @main.route('/about')
@@ -35,6 +21,9 @@ def about():
 def new_post():
     form = PostForm()
     if form.validate_on_submit():
+        post = Post(title=form.title.data, content=form.content.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
         flash('Post created successfully!', 'success')
         return redirect(url_for('.index'))
     return render_template('create_post.html', title='New Post', form=form)
