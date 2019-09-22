@@ -1,9 +1,9 @@
 from flask import render_template,redirect,url_for, flash,request
+from .. import db,bcrypt
 from flask_login import login_user,logout_user,login_required
 from . import auth
 from ..models import User
 from .forms import LoginForm,RegistrationForm
-from .. import db
 from ..email import mail_message
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -19,8 +19,8 @@ def register():
         db.session.commit()
 
         flash(f'Your account has been created! You are now able to login', 'success')
-        return redirect(url_for('login'))
-    return render_template('register.html', title='Register', form=form)
+        return redirect(url_for('auth.login'))
+    return render_template('auth/register.html', title='Register', form=form)
 
 @auth.route('/login',methods=['GET','POST'])
 def login():
@@ -35,7 +35,7 @@ def login():
             return redirect( next_page ) if next_page else redirect (url_for('home'))
         else:
             flash('Loggin Unsuccessful. Please check email and password', 'danger')    
-    return render_template('login.html', title='Login', form=form)
+    return render_template('auth/login.html', title='Login', form=form)
 
 
 @auth.route('/logout')
