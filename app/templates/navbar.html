@@ -18,13 +18,15 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right ml-auto">
                     {% if current_user.is_authenticated %}
-                    <li><a class="glyphicon glyphicon-user" style="color: #cbd5db; font-weight: 500; margin-left: 460px;">You're logged in as</a></li> 
+                    <li><a class="glyphicon glyphicon-user" style="color: #cbd5db; font-weight: 500; margin-right: 40px;">You're logged in as</a> 
+
+                    
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                            aria-haspopup="true" aria-expanded="false" style="margin-right: 50px; color: #cbd5db; font-weight: 500;">{{current_user.username| capitalize}} <span
+                            aria-haspopup="true" aria-expanded="false" style="margin-right: 40px; color: #cbd5db; font-weight: 500;">{{current_user.username| capitalize}}<span
                                 class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
-                            <li><a style="color: #cbd5db; font-weight: 500;" href="#">Posts</a></li>
+                        <ul class="dropdown">
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Posts</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
                         </ul>
