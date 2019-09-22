@@ -9,6 +9,9 @@
     <title>Home-Blogging Website</title>
 </head>
 <body>
+    {% block navbar %}
+        {% include 'navbar.html' %}
+    {% endblock %}
     {% block content %}{% endblock %}
 </body>
 </html>
