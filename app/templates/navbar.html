@@ -1,6 +1,6 @@
 <header class="nav-header">
     <div>
-        <nav class="navbar role=navigation navbar-fixed-top scrolling-navbar navbar-expand-lg"  style="background-color: rgb(84, 196, 240)">
+        <nav class="navbar role=navigation scrolling-navbar navbar-expand-lg fixed-top "  style="background-color: rgb(84, 196, 240)">
             <div class="navbar-header">
                 <a href="/" class="navbar-brand mr-4" style="color: #cbd5db; font-weight: 500;"> Blogging Web </a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">
@@ -25,9 +25,8 @@
                         <li><a class="nav-item nav-link active">{{current_user.username| capitalize}}</a></li>    
                         <ul class="nav navbar-nav">
                             <li><a class="nav-item nav-link active"  href="{{url_for('auth.account')}}">Profile</a></li>
-                            <li><a  class="nav-item nav-link active"  href="#">Posts</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a class="nav-item nav-link active"  href="{{url_for('auth.logout')}}">Sign out</a></li>
+                            <li><a class="nav-item nav-link active"  href="{{url_for('auth.logout')}}">Logout</a></li>
                         </ul>
                   
                     {% else %}
