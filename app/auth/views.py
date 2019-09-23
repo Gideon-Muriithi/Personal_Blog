@@ -7,7 +7,7 @@ from .. import db,bcrypt
 from flask_login import login_user,logout_user,login_required
 from . import auth
 from ..models import User
-from .forms import LoginForm,RegistrationForm,UpdateAccountForm
+from .forms import LoginForm,RegistrationForm,UpdateAccountForm,RequestResetForm,RequestResetForm
 from ..email import mail_message
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -81,3 +81,17 @@ def account():
         form.email.data = current_user.email     
     image_file = url_for('static', filename = 'profile_pics/' + current_user.image_file)
     return render_template('profile.html', title='Account', image_file = image_file, form=form)  
+
+@auth.route('/reset_password',methods=['GET','POST'])
+def reset_request():
+    if current_user.is_authenticated:
+        return redirect(url_for('main.index'))
+    form = RequestResetForm()
+    return render_template('reset_request.html', title='Reset Password', form=form)
+
+@auth.route('/reset_password/<token>',methods=['GET','POST'])
+def reset_token(token):
+    if current_user.is_authenticated:
+        return redirect(url_for('main.index'))
+        
+        user = User.verify_reset_token(token)

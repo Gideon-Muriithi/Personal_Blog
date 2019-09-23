@@ -13,9 +13,7 @@
             <div class=" collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li><a class="nav-item nav-link active" style="color: #cbd5db; font-weight: 500;" href="/">Home</a></li>
-                    <li><a class="nav-item nav-link active" style="color: #cbd5db; font-weight: 500;"  href="#">Posts</a></li>
-                    <li><a class="nav-item nav-link active" style="color: #cbd5db; font-weight: 500;" href="{{url_for('main.about')}}">About</a></li>
-                    <li><a class="nav-item nav-link active"  style="color: #cbd5db; font-weight: 500;" href="{{url_for('main.new_post')}}">Add Post</a> 
+                    <li><a class="nav-item nav-link active" style="color: #cbd5db; font-weight: 500;" href="{{url_for('main.about')}}">About</a></li> 
                 </ul>
                 <ul class="nav navbar-nav navbar-right ml-auto">
                     {% if current_user.is_authenticated %}
