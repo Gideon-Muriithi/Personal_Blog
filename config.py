@@ -9,6 +9,7 @@ class Config:
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://gideon:GIdivo2!@localhost/blogging_web'
     UPLOADED_PHOTOS_DEST ='app/static'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
+    QUOTES_URL = 'http://quotes.stormconsultancy.co.uk/random.json'
 
     #email configurations
     MAIL_SERVER = 'smtp.gmail.com'

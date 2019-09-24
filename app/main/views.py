@@ -5,13 +5,15 @@ from .. import db,photos
 from .forms import PostForm, CommentForm
 from flask_login import login_required,current_user
 import datetime
+from ..requests import getQuotes
 
 
 @main.route('/')
 def index():
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=2)
-    return render_template('index.html', posts=posts)
+    quote = getQuotes()
+    return render_template('index.html', posts=posts, quote=quote)
 
 @main.route('/about')
 def about():
