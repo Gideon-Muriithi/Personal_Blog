@@ -5,6 +5,7 @@
     <hr>
     <div class="row">
         <div class="col-md-7">
+                <h3 class="mb-5">Blog Posts</h3>
                 {% for post in posts.items %}   
                 <article class="media content-section">
                     <img class="rounded-circle article-img mt-1 ml-1 mr-1"  style="height: 90px; width: 90px" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}" alt="">
@@ -37,7 +38,7 @@
 
         <div class="col-md-5">
             <div class="content-section">
-                <h3>Sidebar</h3>
+                <h3 class="mb-5">Sidebar</h3>
                 <p class='text-muted'>You can put any information here you'd like here.
                     <ul class="list-group">
                         <li class="list-group-item list-group-item-light">Latest Posts</li>
