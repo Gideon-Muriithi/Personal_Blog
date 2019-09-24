@@ -2,7 +2,7 @@ from flask import render_template,request,redirect,url_for,flash,abort
 from . import main
 from ..models import User,Post
 from .. import db,photos
-from .forms import PostForm
+from .forms import PostForm, CommentForm
 from flask_login import login_required,current_user
 import datetime
 
@@ -33,7 +33,16 @@ def new_post():
 @main.route('/post/<int:post_id>')
 def post(post_id):
     post = Post.query.get_or_404(post_id)
+    
     return render_template('post.html', title=post.title, post=post)
+
+# @main.route('/post/<int:post_id>/comment', methods=['GET','POST'])
+# def comment(post_id):
+#     post = Post.query.get_or_404(post_id)
+#      form = CommentForm()
+    
+#     return render_template('comments.html')
+
 
 @main.route('/post/<int:post_id>/update', methods=['GET','POST'])
 @login_required

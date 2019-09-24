@@ -1,36 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="content-section mt-5">
+<hr class="mt-5">
+<div class="content-section mt-5" style="margin-left: 200px; margin-right: 200px;">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
             <legend class="border-bottom mb-4">Login In</legend>
-            <div class="form-group">    
+            <div class="form-group">
                 {{ form.email.label(class="form-control-label") }}
                 {% if form.email.errors %}
-                    {{ form.email(class="form-control is-invalid") }} 
-                    <div class="invalid-feedback">
-                        {% for error in form.email.errors %}
-                            <span>{{ error  }}</span>
-                        {% endfor %}
-                    </div>
-                    {% else %}
-                    {{ form.email(class="form-control") }} 
-                {% endif %}    
+                {{ form.email(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                    <span>{{ error  }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.email(class="form-control") }}
+                {% endif %}
 
             </div>
             <div class="form-group">
                 {{ form.password.label(class="form-control-label") }}
                 {% if form.password.errors %}
-                    {{ form.password(class="form-control is-invalid") }} 
-                    <div class="invalid-feedback">
-                        {% for error in form.password.errors %}
-                            <span>{{ error  }}</span>
-                        {% endfor %}
-                    </div>
-                    {% else %}
-                    {{ form.password(class="form-control") }} 
-                {% endif %}   
+                {{ form.password(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}
+                    <span>{{ error  }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.password(class="form-control") }}
+                {% endif %}
             </div>
             <div class="form-check">
                 {{ form.remember(class='form-check-input') }}
@@ -39,15 +40,17 @@
         </fieldset>
         <div class="form-group">
             {{ form.submit(class="btn btn-outline-info") }}
+            <small class="text-mutes ml-2">
+                <a href=" {{ url_for('auth.reset_request') }} ">Forgot password?</a>
+            </small>
         </div>
-        <small class="text-mutes ml-2">
-            <a href="#">Forgot password?</a>
-        </small>
+
     </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Need An Account? <a class="ml-2" href="{{ url_for('auth.register') }}">Sign Up</a>
+        </small>
+    </div>
 </div>
-<div class="border-top pt-3">
-    <small class="text-muted">
-        Need An Account? <a class="ml-2" href="{{ url_for('auth.register') }}">Sign Up</a>
-    </small>
-</div>
+<hr>
 {% endblock %}

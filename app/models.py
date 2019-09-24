@@ -1,10 +1,11 @@
+import os
 from datetime import datetime
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from . import db, login_manager
 from flask_login import UserMixin
-import config
 from datetime import datetime 
 
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 @login_manager.user_loader
 def load_user(user_id):

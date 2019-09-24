@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="content-section mt-5">
+<hr class="mt-4">
+<div class="content-section mt-1" style="margin-left: 200px; margin-right: 200px;">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Join Today</legend>
+            <legend class="border-bottom mb-4">Join Now</legend>
             <div class="form-group">
                 {{ form.username.label(class="form-control-label") }}
                 
@@ -66,10 +67,11 @@
             {{ form.submit(class="btn btn-outline-info") }}
         </div>
     </form>
+    <div class="border-top pt-3">
+            <small class="text-muted">
+                Already Have An Account? <a class="ml-2" href="{{ url_for('auth.login') }}">Sign In</a>
+            </small>
+        </div>
 </div>
-<div class="border-top pt-3">
-    <small class="text-muted">
-        Already Have An Account? <a class="ml-2" href="{{ url_for('auth.login') }}">Sign In</a>
-    </small>
-</div>
+<hr>
 {% endblock %}

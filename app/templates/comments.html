@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<hr class="mt-5">
-<div class="content-section mt-3" style="margin-left: 200px; margin-right: 200px;"> 
+<div class="content-section mt-5">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
@@ -39,5 +38,4 @@
         </div>
     </form>
 </div>
-<hr>
 {% endblock %}
