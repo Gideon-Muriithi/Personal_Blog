@@ -5,7 +5,7 @@ from .. import db,photos
 from .forms import PostForm, CommentForm
 from flask_login import login_required,current_user
 import datetime
-from ..requests import getQuotes
+from app.requests import getQuotes
 
 
 @main.route('/')
