@@ -1,28 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
+<div style="background-color: rgb(250, 250, 250)">
 <article class="media content-section mt-5">
     <div class="media-body">
         <div class="article-metadata">
-                <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}" 
+            <img class="rounded-circle article-img"
+                src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}"
                 style="height: 90px; width: 90px" alt="">
-                <div class="media-body">
-                    <div class="article-metadata">
-                        <a class="mr-2" href="#">{{ post.author.username }}</a>
-                        <small class="text-muted">Posted on {{ post.date_posted.strftime('%b %d, %Y, %T') }}</small>
-                    </div>
-                    <hr>
-            {% if post.author == current_user %}
-            <div>
-                <a class="btn btn-secondary btn-sm mt-1 mb-1" href=" {{url_for('main.update_post', post_id=post.id)}} ">Update
-                    Post</a>
-                <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal"
-                    data-target="#deleteModal">Delete Post</button>
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ post.author.username }}</a>
+                    <small class="text-muted">Posted on {{ post.date_posted.strftime('%b %d, %Y, %T') }}</small>
+                </div>
+                <hr>
+                {% if post.author == current_user %}
+                <div>
+                    <a class="btn btn-secondary btn-sm mt-1 mb-1"
+                        href=" {{url_for('main.update_post', post_id=post.id)}} ">Update
+                        Post</a>
+                    <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal"
+                        data-target="#deleteModal">Delete Post</button>
+                </div>
+                {% endif %}
             </div>
-            {% endif %}
+            <div style="font-family: 'Times New Roman', Times; justify-content: first baseline;">
+                <h4 class="article-title">{{ post.title }}</h4>
+                <p class="article-content">{{ post.content }}</p>
+            </div>
         </div>
-        <h4 class="article-title">{{ post.title }}</h4>
-        <p class="article-content">{{ post.content }}</p>
-    </div>
 </article>
 
 <!-- Modal -->
@@ -38,11 +43,12 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <form action=" {{ url_for('main.delete_post', post_id=post.id) }} " method="POST">
-                <input class="btn btn-danger" type="submit" value="Delete">
-              </form>
+                <form action=" {{ url_for('main.delete_post', post_id=post.id) }} " method="POST">
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                </form>
             </div>
         </div>
     </div>
+</div>
 </div>
 {% endblock %}

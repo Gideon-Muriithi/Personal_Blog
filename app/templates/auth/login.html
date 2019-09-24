@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 <hr class="mt-5">
-<div class="content-section mt-5" style="margin-left: 200px; margin-right: 200px;">
+<div class="content-section mt-5" style="margin-left: 200px; margin-right: 200px; background-color: rgb(250, 250, 250)">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Login In</legend>
+            <legend class="border-bottom mb-4" style="text-align: center">Enter Your Credentials</legend>
             <div class="form-group">
                 {{ form.email.label(class="form-control-label") }}
                 {% if form.email.errors %}

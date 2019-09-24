@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 <hr class="mt-4">
-<div class="content-section mt-1" style="margin-left: 200px; margin-right: 200px;">
+<div class="content-section mt-1" style="margin-left: 200px; margin-right: 200px; background-color: rgb(250, 250, 250)">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Join Now</legend>
+            <legend class="border-bottom mb-4" style="text-align: center">Join Now</legend>
             <div class="form-group">
                 {{ form.username.label(class="form-control-label") }}
                 
